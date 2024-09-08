@@ -10,9 +10,12 @@ class StartScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-          child: Image.asset(
-            'images/quiz-logo.png',
-            width: 350,
+          child: Opacity(
+            opacity: 0.6,
+            child: Image.asset(
+              'images/quiz-logo.png',
+              width: 350,
+            ),
           ),
         ),
         Container(

@@ -14,16 +14,16 @@ class _StartQuizState extends State<StartQuiz> {
   @override
   Widget build(context) {
     return OutlinedButton.icon(
-      onPressed: click,
+      onPressed: () {},
       style: OutlinedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(255, 91, 42, 183),
+        backgroundColor: const Color.fromARGB(255, 107, 15, 168),
         foregroundColor: Colors.white70,
       ),
       icon: const Icon(Icons.quiz_outlined),
       label: const Text(
         "Start Quiz",
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.white70,
           fontSize: 20,
         ),
       ),
