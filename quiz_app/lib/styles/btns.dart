@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/data/questions.dart';
-import 'package:quiz_app/models/quiz_questions.dart';
 
 var btnStyle = ElevatedButton.styleFrom(
   backgroundColor: const Color.fromARGB(218, 45, 2, 76),
@@ -13,28 +11,30 @@ var btnStyle = ElevatedButton.styleFrom(
 );
 
 class AnswerButton extends StatelessWidget {
-  const AnswerButton({super.key});
+  const AnswerButton({
+    super.key,
+    required this.answerText,
+    required this.onTap,
+  });
+
+  final String answerText;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-
-        for (int i = 0; i < questions.length; i++) ...[
-          ElevatedButton(
-            onPressed: () {},
-            style: btnStyle,
-            child: const Text(
-              questions[i],
-              softWrap: true,
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
+    return Column(children: [
+      ElevatedButton(
+        onPressed: onTap,
+        style: btnStyle,
+        child: Text(
+          answerText,
+          softWrap: true,
+          style: const TextStyle(
+            color: Colors.white,
           ),
-          const SizedBox(height: 10),
-        ]
-      ],
-    );
+        ),
+      ),
+      const SizedBox(height: 10),
+    ]);
   }
 }
