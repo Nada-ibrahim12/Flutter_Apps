@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 var btnStyle = ElevatedButton.styleFrom(
   backgroundColor: const Color.fromARGB(218, 45, 2, 76),
-  // minimumSize: const Size(150, 15),
-  // maximumSize: const Size(400, 900),
+  minimumSize: const Size(double.infinity, 15),
   padding: const EdgeInsets.all(20),
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(20),
