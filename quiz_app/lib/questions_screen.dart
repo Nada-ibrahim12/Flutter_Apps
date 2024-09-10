@@ -39,12 +39,22 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           const SizedBox(
             height: 20,
           ),
-          for (int i = 0; i < currentQuestion.answers.length; i++) ...[
-            AnswerButton(
-              answerText: currentQuestion.answers[i],
+          // display answers using map and spread
+          ...currentQuestion.answers.map((answer) {
+            return AnswerButton(
+              answerText: answer,
               onTap: () {},
-            )
-          ],
+            );
+          })
+          
+          // display answers using for loop and spread
+
+          // for (int i = 0; i < currentQuestion.answers.length; i++) ...[
+          //   AnswerButton(
+          //     answerText: currentQuestion.answers[i],
+          //     onTap: () {},
+          //   )
+          // ],
         ],
       ),
     );
