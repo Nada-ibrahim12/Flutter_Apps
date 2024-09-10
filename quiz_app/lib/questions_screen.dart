@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
-import 'package:quiz_app/models/quiz_questions.dart';
 import 'package:quiz_app/styles/btns.dart';
 
 class QuestionsScreen extends StatefulWidget {
@@ -20,11 +19,21 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            currentQuestion.text,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 25,
+          Center(
+            child: Container(
+              constraints: const BoxConstraints(
+                maxWidth: 400,
+              ),
+              child: Text(
+                currentQuestion.text,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                ),
+                textAlign: TextAlign.center,
+                softWrap: true,
+                overflow: TextOverflow.visible,
+              ),
             ),
           ),
           const SizedBox(
@@ -41,4 +50,3 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     );
   }
 }
-
