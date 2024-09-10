@@ -16,46 +16,51 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Container(
-              constraints: const BoxConstraints(
-                maxWidth: 400,
-              ),
-              child: Text(
-                currentQuestion.text,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
+      child: Container(
+        margin: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Center(
+              child: Container(
+                constraints: const BoxConstraints(
+                  maxWidth: 400,
                 ),
-                textAlign: TextAlign.center,
-                softWrap: true,
-                overflow: TextOverflow.visible,
+                child: Text(
+                  currentQuestion.text,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                  ),
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  overflow: TextOverflow.visible,
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          // display answers using map and spread
-          ...currentQuestion.answers.map((answer) {
-            return AnswerButton(
-              answerText: answer,
-              onTap: () {},
-            );
-          })
-          
-          // display answers using for loop and spread
+            const SizedBox(
+              height: 20,
+            ),
+            // display answers using map and spread
+            ...currentQuestion.answers.map(
+              (answer) {
+                return AnswerButton(
+                  answerText: answer,
+                  onTap: () {},
+                );
+              },
+            ),
+            // display answers using for loop and spread
 
-          // for (int i = 0; i < currentQuestion.answers.length; i++) ...[
-          //   AnswerButton(
-          //     answerText: currentQuestion.answers[i],
-          //     onTap: () {},
-          //   )
-          // ],
-        ],
+            // for (int i = 0; i < currentQuestion.answers.length; i++) ...[
+            //   AnswerButton(
+            //     answerText: currentQuestion.answers[i],
+            //     onTap: () {},
+            //   )
+            // ],
+          ],
+        ),
       ),
     );
   }
