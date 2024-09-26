@@ -1,5 +1,3 @@
-import 'package:quiz_app/models/quiz_questions.dart';
-
 const questions = [
   QuizQuestions(
     'What are the main building blocks of Flutter UIs?',
@@ -56,3 +54,17 @@ const questions = [
     ],
   ),
 ];
+
+class QuizQuestions {
+  const QuizQuestions(this.text, this.answers);
+
+  final String text;
+  final List<String> answers;
+
+  // Shuffles the answers
+  List<String> get shuffledAnswers {
+    final shuffledList = List.of(answers);
+    shuffledList.shuffle();
+    return shuffledList;
+  }
+}

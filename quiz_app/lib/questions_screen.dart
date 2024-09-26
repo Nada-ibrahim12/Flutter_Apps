@@ -1,18 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/styles/btns.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
+  const QuestionsScreen({
+    super.key,
+    required this.onSelectedAnswer,
+  });
+
+  final void Function(String answer) onSelectedAnswer;
 
   @override
   State<QuestionsScreen> createState() => _QuestionsScreenState();
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+  var currentQuestionIndex = 0;
+
+  void answerQuestion(String selectedAnswer) {
+    widget.onSelectedAnswer(selectedAnswer);
+    setState(
+      () {
+        currentQuestionIndex++;
+      },
+    );
+  }
+
   @override
   Widget build(context) {
-    final currentQuestion = questions[0];
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       width: double.infinity,
@@ -23,10 +40,10 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           children: [
             Text(
               currentQuestion.text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-              ),
+              style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
               softWrap: true,
               overflow: TextOverflow.visible,
@@ -35,11 +52,13 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               height: 20,
             ),
             // display answers using map and spread
-            ...currentQuestion.answers.map(
+            ...currentQuestion.shuffledAnswers.map(
               (answer) {
                 return AnswerButton(
                   answerText: answer,
-                  onTap: () {},
+                  onTap: () {
+                    answerQuestion(answer);
+                  },
                 );
               },
             ),
